@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -53,9 +54,7 @@ namespace SimpleWebApp
                 //
                 endpoints.MapGet("/randomPrediction", async context =>
                 {
-                    // Будут проблемы
-                    PredicitionsManager pm = new PredicitionsManager();
-                    await context.Response.WriteAsync(pm.GetRandomPrediction());
+                    await context.Response.WriteAsync(PredicitionsManager.GetInstance().GetRandomPrediction());
                 });
 
                 endpoints.MapGet("/login", async context => 
@@ -72,8 +71,9 @@ namespace SimpleWebApp
 
                 endpoints.MapGet("/addPrediction", async context =>
                 {
-                    PredicitionsManager pm = new PredicitionsManager();
-                    //var query = context.Request.Query;
+                    PredicitionsManager.GetInstance()
+                        .AddPrediction(context.Request.Query["newPrediction"]);
+                    Debug.WriteLine(context.Request.Query["date"]);
                 });
             });
         }

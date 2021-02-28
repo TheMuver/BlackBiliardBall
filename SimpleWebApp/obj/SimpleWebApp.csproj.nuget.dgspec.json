@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\repos\\SimpleWebApp\\SimpleWebApp\\SimpleWebApp.csproj": {}
+    "C:\\repos\\SimpleWebApp\\SimpleWebApp\\SimpleWebApp.csproj": {}
   },
   "projects": {
-    "c:\\repos\\SimpleWebApp\\SimpleWebApp\\SimpleWebApp.csproj": {
+    "C:\\repos\\SimpleWebApp\\SimpleWebApp\\SimpleWebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\repos\\SimpleWebApp\\SimpleWebApp\\SimpleWebApp.csproj",
+        "projectUniqueName": "C:\\repos\\SimpleWebApp\\SimpleWebApp\\SimpleWebApp.csproj",
         "projectName": "SimpleWebApp",
-        "projectPath": "c:\\repos\\SimpleWebApp\\SimpleWebApp\\SimpleWebApp.csproj",
+        "projectPath": "C:\\repos\\SimpleWebApp\\SimpleWebApp\\SimpleWebApp.csproj",
         "packagesPath": "C:\\Users\\syava\\.nuget\\packages\\",
-        "outputPath": "c:\\repos\\SimpleWebApp\\SimpleWebApp\\obj\\",
+        "outputPath": "C:\\repos\\SimpleWebApp\\SimpleWebApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
