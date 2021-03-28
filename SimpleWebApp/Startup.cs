@@ -18,6 +18,7 @@ namespace SimpleWebApp
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<PredicitionsManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,10 +52,10 @@ namespace SimpleWebApp
                     await context.Response.WriteAsync(page);
                 });
 
-                //
                 endpoints.MapGet("/randomPrediction", async context =>
                 {
-                    await context.Response.WriteAsync(PredicitionsManager.GetInstance().GetRandomPrediction());
+                    PredicitionsManager predicitionsManager = app.ApplicationServices.GetService<PredicitionsManager>();
+                    await context.Response.WriteAsync(predicitionsManager.GetRandomPrediction().prediction);
                 });
 
                 endpoints.MapGet("/login", async context => 
@@ -69,11 +70,27 @@ namespace SimpleWebApp
                     await context.Response.WriteAsync(login);
                 });
 
-                endpoints.MapGet("/addPrediction", async context =>
+                endpoints.MapPost("/addPrediction", async context =>
                 {
-                    PredicitionsManager.GetInstance()
-                        .AddPrediction(context.Request.Query["newPrediction"]);
-                    Debug.WriteLine(context.Request.Query["date"]);
+                    Prediction p = await context.Request.ReadFromJsonAsync<Prediction>();
+                    app.ApplicationServices.GetService<PredicitionsManager>().AddPrediction(p);
+                });
+
+                endpoints.MapGet("/getAllPredictions", async context => {
+                    context.Response.ContentType = "application/json";
+                    await context.Response.WriteAsJsonAsync(app.ApplicationServices.GetService<PredicitionsManager>().GetAllPreditictions());
+                });
+
+                endpoints.MapPost("/deletePrediction", async context => {
+                    Prediction p = await context.Request.ReadFromJsonAsync<Prediction>();
+                    app.ApplicationServices.GetService<PredicitionsManager>().DeletePrediction(p);
+                });
+
+                endpoints.MapPost("/updatePrediction", async context => {
+                    string[] s;
+                    using (var sr = new StreamReader(context.Request.BodyReader.AsStream()))
+                        s = sr.ReadToEnd().Split("::");
+                    app.ApplicationServices.GetService<PredicitionsManager>().UpdatePrediction(int.Parse(s[0]), s[1]);
                 });
             });
         }

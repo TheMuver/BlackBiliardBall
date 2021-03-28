@@ -7,29 +7,34 @@ namespace SimpleWebApp
 {
     public class PredicitionsManager
     {
-        private List<string> _answers = new List<string>() { "Тебе повезёт!", "Тебя ждёт что-то интересное.", "Не думай.", "Да", "Нет", "Не знаю" };
-        private static PredicitionsManager _instance;
+        private List<Prediction> _answers = new List<Prediction>() { new Prediction("Тебе повезёт!")/*, "Тебя ждёт что-то интересное.", "Не думай.", "Да.", "Нет.", "Не знаю."*/ };
 
-        private PredicitionsManager()
-        { }
-
-
-        public static PredicitionsManager GetInstance()
+        public Prediction GetRandomPrediction()
         {
-            if (_instance == null)
-                _instance = new PredicitionsManager();
-            return _instance;
+            if (_answers.Count != 0)
+                return _answers[new Random().Next(_answers.Count)];
+            return new Prediction("В данный момент предсказания отсутствуют.");
         }
 
-
-        public string GetRandomPrediction()
+        public Prediction[] GetAllPreditictions()
         {
-            return _answers[new Random().Next(_answers.Count)];
+            return _answers.ToArray();
         }
 
-        public void AddPrediction(string prediction)
+        public void AddPrediction(Prediction prediction)
         {
             _answers.Add(prediction);
+        }
+
+        public void DeletePrediction(Prediction prediction)
+        {
+            if (_answers.Contains(prediction))
+                _answers.Remove(prediction);
+        }
+
+        public void UpdatePrediction(int i, string text)
+        {
+            _answers[i].prediction = text;
         }
     }
 }

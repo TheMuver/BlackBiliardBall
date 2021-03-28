@@ -39,15 +39,90 @@
 
         <div class="input-group" style="width: 70%; margin-left: 10%">
             <span class="input-group-text">Добавить новый вариант предсказания:</span>
-            <textarea class="form-control" aria-label="Добавить новый вариант предсказания:" id="text"></textarea>
+            <textarea id="text" class="form-control" aria-label="Добавить новый вариант предсказания:"></textarea>
             <button class="btn btn-primary" onclick="onAddButtonClick()">Add 🍕</button>
+        </div>
+    </div>
+    <div id="predictions-info" style="        
+        color: whitesmoke;
+        text-align: center;">
+        <h2>Текущие предсказания:</h2>
+        <div id="predictions-list">
+
         </div>
     </div>
 
     <script>
-        function onAddButtonClick() {
+        window.onload = () => { onLoadAllPredictions(); }
+
+        async function onAddButtonClick() {
             let newPrediction = document.getElementById("text").value
-            fetch("/addPrediction?newPrediction=" + newPrediction + "&date=" + "12341234")
+            document.getElementById("text").value = "";
+            const data = { prediction: newPrediction };
+            const response = await fetch("/addPrediction", {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+            onLoadAllPredictions();
+        }
+
+        async function onLoadAllPredictions() {
+            document.getElementById("predictions-list").remove();
+            predictions = document.createElement("div");
+            predictions.id = "predictions-list";
+            let i = 0;
+            fetch("/getAllPredictions").then((response) => {
+                    response.json().then((data) => {
+                        let array = Object.values(data);
+                        array.forEach(element => {
+                            div = createPredictionElement(element, i);
+                            predictions.append(div);
+                            i += 1;
+                        });
+                    });
+                });
+            document.getElementById("predictions-info").append(predictions);
+        }
+
+        function createPredictionElement(element, i) {
+            let deleteButton = document.createElement("button");
+            let updateButton = document.createElement("button");
+            deleteButton.textContent = "Удалить";
+            deleteButton.onclick = () => { deletePredictionElement(i); };
+            updateButton.textContent = "Сохранить";
+            updateButton.onclick = () => { updatePredictionElement(i); };
+            let div = document.createElement("div")
+            div.id = "prediction" + i;
+            div.style = "display: flex; justify-content: center;";
+            let input = document.createElement("input");
+            input.value = element.prediction;
+            div.append(input);
+            div.append(deleteButton);
+            div.append(updateButton);
+            return div;
+        }
+
+        async function deletePredictionElement(i) {
+            let predictionText = document.getElementById("prediction" + i).firstChild.value;
+            await fetch("/deletePrediction", {
+                method: "POST",
+                body: JSON.stringify({ prediction: predictionText }),
+                headers: { "Content-Type": "application/json" }
+            });
+            onLoadAllPredictions();
+        }
+
+        async function updatePredictionElement(i) {
+            let predictionText = document.getElementById("prediction" + i).firstChild.value;
+            await fetch("/updatePrediction", {
+                method: "POST",
+                body: i + "::" + predictionText,
+                headers: { "Content-Type": "application/json" }
+            });
+            onLoadAllPredictions();
         }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
