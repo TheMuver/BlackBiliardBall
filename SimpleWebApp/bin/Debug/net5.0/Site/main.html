@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- Строка нужна для подключения русского языка -->
+    <meta charset="utf-8" />
+    <title>Main page</title>
+</head>
+<body id="">
+    U are welcome! Добро пожаловать!
+    <br />
+    <input id="login" title="login" >
+    <br />
+    <input id="password" type="password">
+    <br />
+    <button onclick="onClick()">Push me!</button>
+    <button id="generatorButton" onclick="generateElement">GenerateNewElements</button>
+
+
+    <script>
+        window.onload = () => { alert("Hello!") }
+        window.onkeyup = (keyEv) => { if (keyEv.key == "Enter") onClick() }
+
+        async function onClick() {
+            let authResponse = await (await (await fetch("/auth")).text()).split(" ")
+            let correctLogin = authResponse[0]
+            let correctPassword = authResponse[1]
+
+            let textPassword = document.getElementById("password")
+            let textLogin = document.getElementById("login")
+
+            if (textPassword.value == correctPassword && textLogin.value.toLowerCase() == correctLogin) {
+                alert("Login and password are correct! :)")
+                window.location = "/admin"
+            } else {
+                alert("Login and password are incorrect! :(")
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "qYmnBiuDQuFk9ojXG2Agvfejsc5tvDRTlJtvqOmdsb/pKMDCHZc+k/z9GRqKOXgyaVnzFYXs8qRBd228FfM9Ag==",
+  "success": true,
+  "projectFilePath": "O:\\repos\\SimpleWebApp\\SimpleWebApp.Repository\\SimpleWebApp.Repository.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\dapper\\2.0.78\\dapper.2.0.78.nupkg.sha512"
+  ],
+  "logs": []
+}

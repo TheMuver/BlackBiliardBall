@@ -33,7 +33,7 @@ namespace SimpleWebApp
 
             app.UseEndpoints(endpoints =>
             {
-                //
+                
                 endpoints.MapGet("/", async context =>
                 {
                     string page = File.ReadAllText("Site/homePage.html");
@@ -89,7 +89,7 @@ namespace SimpleWebApp
                 endpoints.MapPost("/updatePrediction", async context => {
                     string[] s;
                     using (var sr = new StreamReader(context.Request.BodyReader.AsStream()))
-                        s = sr.ReadToEnd().Split("::");
+                        s = (await sr.ReadToEndAsync()).Split("::");
                     app.ApplicationServices.GetService<PredicitionsManager>().UpdatePrediction(int.Parse(s[0]), s[1]);
                 });
             });

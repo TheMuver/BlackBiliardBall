@@ -44,3 +44,8 @@ O:\repos\SimpleWebApp\SimpleWebApp\obj\Debug\net5.0\SimpleWebApp.dll
 O:\repos\SimpleWebApp\SimpleWebApp\obj\Debug\net5.0\ref\SimpleWebApp.dll
 O:\repos\SimpleWebApp\SimpleWebApp\obj\Debug\net5.0\SimpleWebApp.pdb
 O:\repos\SimpleWebApp\SimpleWebApp\obj\Debug\net5.0\SimpleWebApp.genruntimeconfig.cache
+O:\repos\SimpleWebApp\SimpleWebApp\bin\Debug\net5.0\Site\adminPage.html
+O:\repos\SimpleWebApp\SimpleWebApp\bin\Debug\net5.0\Site\answersPage.html
+O:\repos\SimpleWebApp\SimpleWebApp\bin\Debug\net5.0\Site\homePage.html
+O:\repos\SimpleWebApp\SimpleWebApp\bin\Debug\net5.0\Site\main.html
+O:\repos\SimpleWebApp\SimpleWebApp\bin\Debug\net5.0\Site\predictionPage.html
