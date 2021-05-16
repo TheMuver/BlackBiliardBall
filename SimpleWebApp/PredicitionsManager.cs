@@ -18,8 +18,8 @@ namespace SimpleWebApp
 
         public Prediction GetRandomPrediction()
         {
-            List<Prediction> list = _repository.GetAllPredictions().Select(x => new Prediction(x.PredictionText)).ToList();
-            return list[new Random().Next(list.Count)];
+            List<PredictionDto> list = _repository.GetAllPredictions();
+            return new Prediction(list[new Random().Next(list.Count)]);
         }
 
         public List<Prediction> GetAllPreditictions()

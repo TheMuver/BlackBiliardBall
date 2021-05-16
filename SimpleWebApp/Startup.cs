@@ -13,6 +13,8 @@ using System.Threading.Tasks;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 
+using SimpleWebApp.Repository;
+
 namespace SimpleWebApp
 {
     public class Startup
@@ -21,8 +23,10 @@ namespace SimpleWebApp
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IPredictionsRepository>(new PredictionsDb());
             services.AddSingleton<PredicitionsManager>();
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            services
+                .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options => options.LoginPath = new PathString("/Auth"));
             services.AddAuthorization();
         }

@@ -56,14 +56,14 @@ namespace SimpleWebApp.Repository
             }
         }
 
-        public PredictionDto[] GetAllPredictions()
+        public List<PredictionDto> GetAllPredictions()
         {
-            PredictionDto[] predictions;
+            List<PredictionDto> predictions;
             using (IDbConnection db = new MySqlConnection(CONNECTIONSTRING))
             {
                 string sqlQuery = "SELECT * FROM predictions";
 
-                predictions = db.Query<PredictionDto>(sqlQuery).ToArray();
+                predictions = db.Query<PredictionDto>(sqlQuery).ToList();
             }
             return predictions;
         }
