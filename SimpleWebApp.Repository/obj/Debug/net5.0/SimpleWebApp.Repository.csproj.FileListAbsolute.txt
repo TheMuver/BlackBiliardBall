@@ -1,0 +1,12 @@
+O:\repos\SimpleWebApp\SimpleWebApp.Repository\bin\Debug\net5.0\SimpleWebApp.Repository.deps.json
+O:\repos\SimpleWebApp\SimpleWebApp.Repository\bin\Debug\net5.0\SimpleWebApp.Repository.dll
+O:\repos\SimpleWebApp\SimpleWebApp.Repository\bin\Debug\net5.0\ref\SimpleWebApp.Repository.dll
+O:\repos\SimpleWebApp\SimpleWebApp.Repository\bin\Debug\net5.0\SimpleWebApp.Repository.pdb
+O:\repos\SimpleWebApp\SimpleWebApp.Repository\obj\Debug\net5.0\SimpleWebApp.Repository.csprojAssemblyReference.cache
+O:\repos\SimpleWebApp\SimpleWebApp.Repository\obj\Debug\net5.0\SimpleWebApp.Repository.GeneratedMSBuildEditorConfig.editorconfig
+O:\repos\SimpleWebApp\SimpleWebApp.Repository\obj\Debug\net5.0\SimpleWebApp.Repository.AssemblyInfoInputs.cache
+O:\repos\SimpleWebApp\SimpleWebApp.Repository\obj\Debug\net5.0\SimpleWebApp.Repository.AssemblyInfo.cs
+O:\repos\SimpleWebApp\SimpleWebApp.Repository\obj\Debug\net5.0\SimpleWebApp.Repository.csproj.CoreCompileInputs.cache
+O:\repos\SimpleWebApp\SimpleWebApp.Repository\obj\Debug\net5.0\SimpleWebApp.Repository.dll
+O:\repos\SimpleWebApp\SimpleWebApp.Repository\obj\Debug\net5.0\ref\SimpleWebApp.Repository.dll
+O:\repos\SimpleWebApp\SimpleWebApp.Repository\obj\Debug\net5.0\SimpleWebApp.Repository.pdb

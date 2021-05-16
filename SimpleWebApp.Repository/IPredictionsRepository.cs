@@ -7,8 +7,14 @@ namespace SimpleWebApp.Repository
 {
     public interface IPredictionsRepository
     {
-        void SavePrediction(PredictionDto prediction);
+        void InsertPrediction(string text);
 
-        
+        void UpdatePrediction(PredictionDto prediction);
+
+        void DeletePrediction(PredictionDto prediction);
+
+        PredictionDto GetPredictionById(int id);
+
+        PredictionDto[] GetAllPredictions();
     }
 }

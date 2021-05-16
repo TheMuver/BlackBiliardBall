@@ -4,6 +4,79 @@
     "O:\\repos\\SimpleWebApp\\SimpleWebApp\\SimpleWebApp.csproj": {}
   },
   "projects": {
+    "O:\\repos\\SimpleWebApp\\SimpleWebApp.Repository\\SimpleWebApp.Repository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "O:\\repos\\SimpleWebApp\\SimpleWebApp.Repository\\SimpleWebApp.Repository.csproj",
+        "projectName": "SimpleWebApp.Repository",
+        "projectPath": "O:\\repos\\SimpleWebApp\\SimpleWebApp.Repository\\SimpleWebApp.Repository.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "O:\\repos\\SimpleWebApp\\SimpleWebApp.Repository\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.emzi0767.com/api/v3/index.json": {},
+          "https://www.myget.org/F/discord-net/api/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.78, )"
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.23, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "O:\\repos\\SimpleWebApp\\SimpleWebApp\\SimpleWebApp.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -32,7 +105,11 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "O:\\repos\\SimpleWebApp\\SimpleWebApp.Repository\\SimpleWebApp.Repository.csproj": {
+                "projectPath": "O:\\repos\\SimpleWebApp\\SimpleWebApp.Repository\\SimpleWebApp.Repository.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

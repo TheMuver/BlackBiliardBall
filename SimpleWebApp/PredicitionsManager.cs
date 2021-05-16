@@ -3,38 +3,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using SimpleWebApp.Repository;
+
 namespace SimpleWebApp
 {
     public class PredicitionsManager
     {
-        private List<Prediction> _answers = new List<Prediction>() { new Prediction("Тебе повезёт!")/*, "Тебя ждёт что-то интересное.", "Не думай.", "Да.", "Нет.", "Не знаю."*/ };
+        private IPredictionsRepository _repository;
+
+        public PredicitionsManager(IPredictionsRepository repository)
+        {
+            _repository = repository;
+        }
 
         public Prediction GetRandomPrediction()
         {
-            if (_answers.Count != 0)
-                return _answers[new Random().Next(_answers.Count)];
-            return new Prediction("В данный момент предсказания отсутствуют.");
+            List<Prediction> list = _repository.GetAllPredictions().Select(x => new Prediction(x.PredictionText)).ToList();
+            return list[new Random().Next(list.Count)];
         }
 
-        public Prediction[] GetAllPreditictions()
+        public List<Prediction> GetAllPreditictions()
         {
-            return _answers.ToArray();
+            return _repository.GetAllPredictions().Select(x => new Prediction(x)).ToList();
         }
 
         public void AddPrediction(Prediction prediction)
         {
-            _answers.Add(prediction);
+            _repository.InsertPrediction(prediction.PredictionText);
         }
 
         public void DeletePrediction(Prediction prediction)
         {
-            if (_answers.Contains(prediction))
-                _answers.Remove(prediction);
+            _repository.DeletePrediction(prediction.GetDto());
         }
 
-        public void UpdatePrediction(int i, string text)
+        public void UpdatePrediction(Prediction prediction)
         {
-            _answers[i].prediction = text;
+            _repository.UpdatePrediction(prediction.GetDto());
         }
     }
 }
